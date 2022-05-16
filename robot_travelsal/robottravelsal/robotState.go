@@ -4,6 +4,7 @@ type IRobotState interface {
 	Move()
 	ChangeDirection(m string) IRobotState
 	GetCordinate() Corditnate
+	NextCordinate() Corditnate
 	SetCordinate(c Corditnate)
 	GetDirection() string
 }
@@ -16,6 +17,12 @@ type Corditnate struct {
 type RobotNorthState struct {
 	Corditnate Corditnate
 	Direction  string
+}
+
+func (r *RobotNorthState) NextCordinate() Corditnate {
+	cord := r.Corditnate
+	cord.YCordinate += 1
+	return cord
 }
 
 func (r *RobotNorthState) Move() {
@@ -48,6 +55,12 @@ type RobotSouthState struct {
 	Direction  string
 }
 
+func (r *RobotSouthState) NextCordinate() Corditnate {
+	cord := r.Corditnate
+	cord.YCordinate += 1
+	return cord
+}
+
 func (r *RobotSouthState) GetCordinate() Corditnate {
 	return r.Corditnate
 }
@@ -78,6 +91,12 @@ type RobotEastState struct {
 	Direction  string
 }
 
+func (r *RobotEastState) NextCordinate() Corditnate {
+	cord := r.Corditnate
+	cord.YCordinate += 1
+	return cord
+}
+
 func (r *RobotEastState) SetCordinate(c Corditnate) {
 	r.Corditnate = c
 }
@@ -106,6 +125,12 @@ func (r *RobotEastState) Move() {
 type RobotWestState struct {
 	Corditnate Corditnate
 	Direction  string
+}
+
+func (r *RobotWestState) NextCordinate() Corditnate {
+	cord := r.Corditnate
+	cord.YCordinate += 1
+	return cord
 }
 
 func (r *RobotWestState) SetCordinate(c Corditnate) {

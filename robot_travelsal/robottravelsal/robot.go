@@ -3,6 +3,8 @@ package robottravelsal
 import "fmt"
 
 type Robot struct {
+	MaxX  int
+	MaxY  int
 	State IRobotState
 }
 
@@ -16,12 +18,15 @@ func (r *Robot) Move(m string) {
 		} else if s == "L" {
 			r.State = r.State.ChangeDirection(s)
 		} else if s == "M" {
-			cordinate := r.State.GetCordinate()
-			r.State.Move()
-			if _, ok := visited[r.State.GetCordinate()]; ok {
-				r.State.SetCordinate(cordinate)
+			cordinate := r.State.NextCordinate()
+			if cordinate.XCorditnate > r.MaxX || cordinate.YCordinate > r.MaxY {
 				break
 			}
+			if _, ok := visited[cordinate]; ok {
+				break
+			}
+			r.State.Move()
+
 		} else {
 			fmt.Println("Not Suported")
 			break
