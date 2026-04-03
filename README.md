@@ -1,10 +1,9 @@
 # Problem Solving Tracker
 
 ## DSA
-- [x] Two Sum
-- [x] Dynamic Array
-- [ ] LRU Cache
+- [x] [Dynamic Array](dsa/arrays/dynamic_array)
 
 ## System Design
-- [ ] URL Shortener
-- [ ] Rate Limiter
+- [ ] [LRU Cache](system-design/lru-cache)
+- [ ] [URL Shortener](system-design/url-shortener)
+- [ ] [Rate Limiter](system-design/rate-limiter)
